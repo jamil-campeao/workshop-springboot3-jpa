@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.jamil.demo.entities.Category;
 import com.jamil.demo.entities.Order;
+import com.jamil.demo.entities.Product;
 import com.jamil.demo.entities.User;
 import com.jamil.demo.entities.enums.OrderStatus;
 import com.jamil.demo.repositories.CategoryRepository;
 import com.jamil.demo.repositories.OrderRepository;
+import com.jamil.demo.repositories.ProductRepository;
 import com.jamil.demo.repositories.UserRepository;
 
 @Configuration
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -35,6 +40,12 @@ public class TestConfig implements CommandLineRunner {
 		Category cat1 = new Category(null, "Eletronics");
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computer");
+		
+		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum solor sit amet, consectur", 90.5, "");
+		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecanas ante", 2190.0, "");
+		Product p3 = new Product(null, "Macbook Pro", "test", 1250.0, "");
+		Product p4 = new Product(null, "PC Gamer", "test2", 1200.0, "");
+		Product p5 = new Product(null, "Rails of Dummies", "test3", 100.99, "");
 		
 		User u1 = new User(null, "Maria Silva", "maria@gmail.com", "988888888", "123456"); 
 		User u2 = new User(null, "Alex João", "alex@gmail.com", "977777777", "123456"); 
@@ -45,7 +56,8 @@ public class TestConfig implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
-		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		
 		
 	}
